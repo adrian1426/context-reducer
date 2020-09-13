@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /*
 Return:
@@ -8,10 +8,25 @@ export const AppContext = React.createContext();
 
 const Contexto = (props) => {
 
+  const [click, setClick] = useState(0)
   const { children } = props;
 
+  const addClick = () => {
+    setClick(click + 1);
+  };
+
+  const removeClick = () => {
+    setClick(click - 1);
+  };
+
   return (
-    <AppContext.Provider value='soy el valor del contexto'>
+    <AppContext.Provider
+      value={{
+        click,
+        add: addClick,
+        remove: removeClick
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

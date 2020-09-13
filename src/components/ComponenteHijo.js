@@ -6,7 +6,9 @@ const ComponenteHijo = () => {
     <AppContext.Consumer>
       {(valueContextGlobal) => (
         <div>
-          <h1>hijo ,{valueContextGlobal}</h1>
+          <h1>click: ,{valueContextGlobal.click}</h1>
+          <button onClick={valueContextGlobal.add}>+</button>
+          <button onClick={valueContextGlobal.remove}>-</button>
         </div>
       )}
     </AppContext.Consumer>
