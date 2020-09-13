@@ -1,10 +1,16 @@
 import React from 'react';
+import ComponenteHijo from './components/ComponenteHijo';
+import Contexto from './context/AppContext';
+
 
 function App() {
   return (
-    <div>
-      <h1>context-reducer</h1>
-    </div>
+    <Contexto>
+      <div>
+        <h1>context-reducer</h1>
+        <ComponenteHijo />
+      </div>
+    </Contexto>
   );
 }
 
