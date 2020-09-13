@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
+import AppReducer from './AppReducer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppReducer />
   </React.StrictMode>,
   document.getElementById('root')
 );
