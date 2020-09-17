@@ -14,7 +14,12 @@ const todoReducer = (state, action) => {
         } else {
           return todo;
         }
-      })
+      });
+    case 'toggle-mejorado':
+      return state.map(todo => (todo.id === action.payload ?
+        { ...todo, done: !todo.done }
+        : todo
+      ));
     default:
       return Object.assign([], state);
   }

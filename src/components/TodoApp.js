@@ -24,7 +24,7 @@ const TodoApp = () => {
 
   const handleToggle = id => {
     dispatch({
-      type: 'toggle',
+      type: 'toggle-mejorado',
       payload: id
     });
   };
