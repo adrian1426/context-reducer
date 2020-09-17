@@ -1,6 +1,8 @@
 import React, { useReducer, useEffect } from 'react';
 import todoReducer from '../reducer/todoReducer';
 import { useForm } from '../hooks/useForm';
+import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 import './styles.css';
 
 const init = () => {
@@ -63,15 +65,13 @@ const TodoApp = () => {
           <ul className="list-group list-group-flush">
             {
               stateTodos.map((todo, i) => (
-                <li key={todo.id} className="list-group-item">
-                  <p
-                    className={`text-center ${todo.done && 'complete'}`}
-                    onClick={() => handleToggle(todo.id)}
-                  >
-                    {i + 1}. {todo.desc}
-                  </p>
-                  <button className="btn btn-danger" onClick={() => handleDelete(todo.id)}>Borrar</button>
-                </li>
+                <TodoList
+                  key={i}
+                  todo={todo}
+                  handleToggle={handleToggle}
+                  handleDelete={handleDelete}
+                  i={i}
+                />
               ))
             }
           </ul>
@@ -81,25 +81,11 @@ const TodoApp = () => {
           <h4>Agregar todo</h4>
           <hr />
 
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="description"
-              placeholder="Aprender ..."
-              autoComplete="off"
-              className="form-control"
-              value={stateForm.description}
-              onChange={handleInputChange}
-            />
-
-            <button
-              className="btn btn-outline-primary mt-1 btn-block"
-              type="submit"
-            >
-              Agregar
-            </button>
-
-          </form>
+          <TodoForm
+            handleSubmit={handleSubmit}
+            stateForm={stateForm}
+            handleInputChange={handleInputChange}
+          />
         </div>
       </div>
     </div>
