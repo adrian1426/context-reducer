@@ -15,6 +15,13 @@ const TodoApp = () => {
     localStorage.setItem('todos', JSON.stringify(stateTodos));
   }, [stateTodos]);
 
+  const handleDelete = id => {
+    dispatch({
+      type: 'delete',
+      payload: id
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -51,7 +58,7 @@ const TodoApp = () => {
               stateTodos.map((todo, i) => (
                 <li key={todo.id} className="list-group-item">
                   <p className="text-center">{i + 1}. {todo.desc}</p>
-                  <button className="btn btn-danger">Borrar</button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(todo.id)}>Borrar</button>
                 </li>
               ))
             }
