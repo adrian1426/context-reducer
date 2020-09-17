@@ -22,6 +22,13 @@ const TodoApp = () => {
     });
   };
 
+  const handleToggle = id => {
+    dispatch({
+      type: 'toggle',
+      payload: id
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -57,7 +64,12 @@ const TodoApp = () => {
             {
               stateTodos.map((todo, i) => (
                 <li key={todo.id} className="list-group-item">
-                  <p className="text-center">{i + 1}. {todo.desc}</p>
+                  <p
+                    className={`text-center ${todo.done && 'complete'}`}
+                    onClick={() => handleToggle(todo.id)}
+                  >
+                    {i + 1}. {todo.desc}
+                  </p>
                   <button className="btn btn-danger" onClick={() => handleDelete(todo.id)}>Borrar</button>
                 </li>
               ))
